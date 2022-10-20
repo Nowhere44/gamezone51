@@ -1,0 +1,137 @@
+@import "compass/css3";
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url(https://subtlepatterns.com/patterns/retina_wood.png);
+    font-family: 'Lato', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+    font-size: 30px;
+    line-height: 38px;
+    margin: 0;
+    position: relative;
+    font-weight: 300;
+    color: #666;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+/* Demo 2 */
+.form-2 {
+    /* Size and position */
+    width: 340px;
+    margin: 60px auto 30px;
+    padding: 15px;
+    position: relative;
+    /* Styles */
+    background: #fffaf6;
+    border-radius: 4px;
+    color: #7e7975;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), 0 1px 5px rgba(0, 0, 0, 0.2), 0 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.form-2 h2 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: bold;
+    color: #6c6763;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ebe6e2;
+    text-shadow: 0 2px 0 rgba(255, 255, 255, 0.8);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+}
+
+.form-2 .row {
+    margin-top: 1em;
+}
+
+.form-2 p {
+    margin: 0;
+    padding: 0;
+}
+
+input[name="_username"],
+input[name="_password"] {
+    box-sizing: border-box;
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    display: block;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 3px solid #ebe6e2;
+    border-radius: 5px;
+    transition: all 0.3s ease-out;
+}
+
+input[name="login"]:hover,
+input[name="password"]:hover {
+    border-color: #ccc;
+}
+
+input[name="login"]:focus,
+input[name="password"]:focus {
+    outline: none;
+}
+
+label {
+    display: block;
+    padding: 0 0 5px 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+    font-size: 11px;
+}
+
+label i {
+    margin-right: 5px;
+    /* Gap between icon and text */
+    display: inline-block;
+    width: 10px;
+}
+
+label:hover~input {
+    border-color: #ccc;
+}
+
+input[type="submit"],
+.log-twitter {
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 38px;
+    text-align: center;
+    font-weight: bold;
+    width: 48%;
+    position: relative;
+}
+
+input[type="submit"]:hover,
+.log-twitter:hover {
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), inset 0 20px 40px rgba(255, 255, 255, 0.15);
+}
+
+input[type="submit"]:active,
+.log-twitter:active {
+    top: 1px;
+}
+
+input[type="submit"] {
+    border: 1px solid #f4ab4c;
+    color: #996319;
+    text-shadow: 0 1px rgba(255, 255, 255, 0.3);
+}

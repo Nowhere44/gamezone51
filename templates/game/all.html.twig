@@ -1,0 +1,50 @@
+{% extends './base.html.twig' %}
+{% block title %}Homepage{% endblock %}
+
+
+{% block body %}
+{{ include("shared/header.html.twig") }}
+<link href="{{asset('CSS/homepage.css')}}" rel="stylesheet" />
+<link href="{{asset('CSS/button.css')}}" rel="stylesheet" />
+
+
+<div class="wrapper">
+
+    <header class="mb-44">
+      <div class='grid grid-cols-2 gap-2'>
+      <h1 class='text-center mt-10 text-gray-600 text-6xl'>WELCOME TO <h1 class='text-red-600 text-center mt-10 text-7xl font-bold'>GAMEZONE51</h1> </h1>
+      </div>
+      <img class="rounded mb-10" src="https://png.pngtree.com/png-vector/20191203/ourmid/pngtree-gaming-logo-design-png-image_2064891.jpg">
+      <ul>
+        <li>OMAR ALMOCTAR COULIBALY</li>
+        <li class='font-bold'>Designer of this wonderful site</li>
+        <li>Computer engineering school student</li>
+        <li>If you like share</li>
+      </ul>
+    </header>
+    <div>
+{% for element in outall %} 
+
+<div class="wrapper">
+
+<article class="-mt-44">
+    <picture class="backdrop"><img src=""></picture>
+    <div class="front">
+      <div class="info-backdrop"></div>
+      <img src="{{element.getImage}}">
+      <div class="info">
+        <h1 class='text-6xl font-bold mt-6'>{{element.getTitle}}</h1>
+        <h2>{{element.getPrice}} €</h2>
+        <button class="learn-more mt-10"><a class="" href="{{path('once', {'id' : element.getId})}}">PLUS DE DETAILS</a></button>
+      </div>
+
+    </div>
+  </article>
+
+
+
+</div>
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Raleway:wght@300&display=swap");
+
+body {
+    line-height: 1.6;
+    letter-spacing: 0.05em;
+    overflow-x: hidden;
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
+
+}
+
+h1,
+h2 {
+    font-family: "Indie Flower", cursive;
+}
+
+h2 {
+    font-size: 3rem;
+    line-height: 1;
+    margin: 1em 0;
+}
+
+header {
+    margin: 100px 0 -500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header img {
+    max-width: 50%;
+    height: auto;
+    margin: 40px auto 0;
+}
+
+header ul {
+    list-style-type: none;
+    display: flex;
+}
+
+header ul li:not(:last-child) {
+    margin-right: 2em;
+}
+
+.wrapper {
+    width: 100%;
+    background-color: white;
+}
+
+article {
+    width: 100%;
+    position: relative;
+    margin-top: 600px;
+}
+
+article:last-child {
+    margin-bottom: 800px;
+}
+
+article picture.backdrop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+article picture.backdrop img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom;
+    filter: blur(90px) brightness(95%) contrast(70%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scaleX(1.5) scaleY(1.14);
+}
+
+article .front {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    transform: translateY(70px);
+    box-sizing: border-box;
+    padding: 20px;
+    perspective: 800px;
+}
+
+article .front::after {
+    position: absolute;
+    content: "";
+    width: 80%;
+    height: 8px;
+    bottom: 0;
+    transform: translateY(-26px);
+    left: 10%;
+    background-color: black;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+article .front img {
+    margin-top: 160px;
+    height: auto;
+    width: 100%;
+    box-shadow: 0 -60px 80px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+article .front .info-backdrop {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 100vw;
+    height: 320px;
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, calc(100% - 60px));
+}
+
+article .front .info {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    transform: translateY(100%);
+}
+
+article:nth-child(even) .front::after {
+    transform: translateY(-26px) rotatey(-1deg);
+}
+
+article:nth-child(even) .front img {
+    transform: rotatey(-1deg);
+}
+
+article:nth-child(odd) .front::after {
+    transform: translateY(-26px) rotatey(1deg);
+}
+
+article:nth-child(odd) .front img {
+    transform: rotatey(1deg);
+}

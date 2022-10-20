@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Details Jeux{% endblock %}
+
+{% block body %}
+
+
+{{ include("shared/headerconnexion.html.twig") }}
+<link href="{{asset('CSS/homepage.css')}}" rel="stylesheet" />
+
+<h1 class="text-9xl text-center p-6 font-bold space-y-10 italic text-gray-600 mt-10 mb-10"> {{one.getTitle}} </h1>
+<img class="mx-auto h-96 w-96 rounded" src="{{one.getImage}}"/>
+<h1 class="text-5xl text-center p-6 font-bold space-y-10 italic mt-6"> Game description : </h1>
+<p class="text-blue-800 text-4xl text-center p-6 font-bold space-y-10 italic">{{one.getDescription}}</p>
+<h1 class="text-black text-5xl text-center p-6 font-bold space-y-10 italic"> Release Date : </h1>
+<p class="text-4xl font-bold mt-10 text-red-800 text-center">{{one.getDate|date('d-m-Y')}}</p>
+
+
+
+<h1 class="text-black text-6xl text-center p-6 font-bold space-y-10 italic text-gray-800 mt-52"> Listes de jeux ayant au moins une caracteristique identique :</h1>
+{% for element in similaire %} 
+
+<div class="wrapper">
+
+<article class="-mt-44">
+    <picture class="backdrop"><img src=""></picture>
+    <div class="front">
+      <div class="info-backdrop"></div>
+      <img src="{{element.getImage}}">
+      <div class="info">
+        <h1 class='text-6xl font-bold mt-6'>{{element.getTitle}}</h1>
+        <h2>{{element.getPrice}} €</h2>
+        <p class="text-2xl">{{element.getDescription}}</p>
+        <p class="text-4xl font-bold mt-14 text-red-800">{{element.getDate|date('d-m-Y')}}</p>
+      </div>
+
+    </div>
+  </article>
+
+
+
+</div>
+
+{% endfor %}
+
+
+
+{% endblock %}

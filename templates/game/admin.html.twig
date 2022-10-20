@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin {% endblock %}
+
+
+{% block body %}
+
+
+{{ include("shared/headerOfAdmin.html.twig") }}
+
+<link href="{{asset('CSS/headeradmin.css')}}" rel='stylesheet'/>
+<link href="{{asset('CSS/button.css')}}" rel='stylesheet'/>
+
+
+<div class="overflow-x-auto relative mt-4 p-20">
+  <table class="w-full text-sm text-left text-gray-700 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-400 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+              <th scope="col" class="py-3 px-6">
+              Index
+              </th>
+              <th scope="col" class="py-3 px-6">
+                  Title
+              </th>
+              <th scope="col" class="py-3 px-6">
+                  Image
+              </th>
+              <th scope="col" class="py-3 px-6">
+                  Prix
+              </th>
+              <th scope="col" class="py-3 px-6">
+                Modifier
+            </th>
+            <th scope="col" class="py-3 px-6">
+              Supprimer
+          </th>
+          </tr>
+      </thead>
+
+      {% for element in all %} 
+
+      <tbody>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              {{loop.index-1}}
+            </th>
+            <td class="py-4 px-6">
+              {{element.getTitle}}
+            </td>
+            <td class="py-4 px-6">
+              <img class="h-52 w-52 mt-4 mb-10 rounded object-cover object-center" src="{{element.getImage}}" /> 
+            </td>
+            <td class="py-4 px-6">
+              {{element.getPrice}}€
+            </td>
+            <td class="py-4 px-6">
+              <a href="{{path('gameedit', {'id' : element.getId})}}" class="px-4 py-1 text-sm text-red-600 bg-blue-200 rounded-full">Modifier</a>
+            </td>
+
+            <td class="py-4 px-6">
+              <a href="{{path('gamedel', {'id' : element.getId})}}" class="px-4 py-1 text-sm text-red-600 bg-blue-200 rounded-full">Supprimer</a>
+            </td>
+        </tr>
+</tbody>
+
+{% endfor %}
+</table>
+</div>
+
+
+    <div class="flex justify-center space-x-12 mb-10">
+    <button class="learn-more mt-10"><a href="{{path('app_game', {})}}">CREATE NEW GAME</a></button>
+    <button class="learn-more mt-10"><a href="{{path('app_logout', {})}}">DECONNEXION</a></button>
+    </div>
+      
+
+{% endblock %}
+
