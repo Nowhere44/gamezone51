@@ -16,7 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class GameController extends AbstractController
 {
-    #[Route('/gaming', name: 'app_game')]
+    #[Route('/product/new', name: 'app_game')]
     #[IsGranted('ROLE_USER')]
     public function index(ManagerRegistry $doctrine, Request $request): Response
     {
@@ -47,7 +47,7 @@ class GameController extends AbstractController
 
 
 
-    #[Route('/', name: 'allgame')]
+    #[Route('', name: 'allgame')]
     public function allgames(GameLauncherRepository $game): Response
     {
 
@@ -62,17 +62,14 @@ class GameController extends AbstractController
 
 
 
-    #[Route('/game/{id}', name: 'once')]
+    #[Route('/product/:{id}', name: 'once')]
     public function one(GameLauncher $game, GameLauncherRepository $games): Response
     {
 
-        $title = $game->getTitle();
-        $description = $game->getDescription();
-        $prix =  $game->getPrice();
-        $image = $game->getImage();
-        $date = $game->getDate();
+        $id = $game->getId();
+        $type = $game->getTypeOfGame();
 
-        $jeuxSimilaires = $games->findAllIdentiqueThing($title, $description, $prix, $image, $date);
+        $jeuxSimilaires = $games->findAllIdentiqueThing($id, $type);
 
 
 
@@ -83,13 +80,13 @@ class GameController extends AbstractController
 
 
 
-    #[Route('/admingame', name: 'admingame')]
+    #[Route('/admin', name: 'admingame')]
     #[IsGranted('ROLE_USER')]
     public function admin(GameLauncherRepository $game): Response
     {
 
 
-        $all = $game->findAll();
+        $all = $game->findAllOrderByPrice();
 
 
         return $this->render('game/admin.html.twig', [
@@ -98,24 +95,11 @@ class GameController extends AbstractController
     }
 
 
-    #[Route('/cgame', name: 'conne')]
-    public function connexion(): Response
-    {
 
 
-
-        return $this->render('game/connexion.html.twig', [
-            'controller_name' => 'GameController',
-        ]);
-    }
-
-
-
-
-
-    #[Route('/game/{id}/edit', name: 'gameedit')]
+    #[Route('/product/:{id}/update', name: 'gameedit')]
     #[IsGranted('ROLE_USER')]
-    public function update(ManagerRegistry $doctrine, Request $request, GameLauncher $game): Response
+    public function update(ManagerRegistry $doctrine, Request $request, GameLauncher $game, GameLauncher $gemme): Response
     {
         $Manager = $doctrine->getManager();
 
@@ -132,13 +116,13 @@ class GameController extends AbstractController
         }
 
         return $this->render('game/edit.html.twig', [
-            'controller_name' => 'GameController', 'formedit' => $editform->createView()
+            'controller_name' => 'GameController', 'formedit' => $editform->createView(), 'une' => $gemme
         ]);
     }
 
 
 
-    #[Route('/game/{id}/del', name: 'gamedel')]
+    #[Route('/product/:{id}/delete', name: 'gamedel')]
     #[IsGranted('ROLE_USER')]
     public function delete(ManagerRegistry $doctrine, GameLauncher $game): Response
     {

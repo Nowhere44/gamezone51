@@ -52,8 +52,20 @@ class GameLauncherRepository extends ServiceEntityRepository
     }
 
 
+    public function findAllOrderByPrice(): array
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->orderBy('c.price', 'desc');
 
-    public function findAllIdentiqueThing($title, $description, $prix, $image, $date): array
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
+
+
+
+
+    public function findAllIdentiqueThing($id, $type): array
     {
 
         $entityManager = $this->getEntityManager();
@@ -61,13 +73,12 @@ class GameLauncherRepository extends ServiceEntityRepository
         $query = $entityManager->createQuery(
             'SELECT p
             FROM App\Entity\GameLauncher as p
-            WHERE (p.price != :price) and (p.date = :date) and (p.title != :title) and (p.image != :image) and (p.description != :description)
+            WHERE
+                    (p.id != :id)
+                and (p.TypeOfGame = :TypeOfGame)
             ORDER BY p.price ASC'
-        )->setParameter('price', $prix)
-            ->setParameter('date', $date)
-            ->setParameter('title', $title)
-            ->setParameter('image', $image)
-            ->setParameter('description', $description);
+        )->setParameter('id', $id)
+            ->setParameter('TypeOfGame', $type);
 
         return $query->execute();
     }

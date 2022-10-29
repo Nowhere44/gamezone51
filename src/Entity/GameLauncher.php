@@ -29,6 +29,12 @@ class GameLauncher
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
+    #[ORM\Column(length: 255)]
+    private string $TypeOfGame;
+
+    #[ORM\Column(length: 255)]
+    private string $developmentIndustry;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +96,30 @@ class GameLauncher
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getTypeOfGame(): ?string
+    {
+        return $this->TypeOfGame;
+    }
+
+    public function setTypeOfGame(string $TypeOfGame): self
+    {
+        $this->TypeOfGame = $TypeOfGame;
+
+        return $this;
+    }
+
+    public function getDevelopmentIndustry(): ?string
+    {
+        return $this->developmentIndustry;
+    }
+
+    public function setDevelopmentIndustry(string $developmentIndustry): self
+    {
+        $this->developmentIndustry = $developmentIndustry;
 
         return $this;
     }

@@ -15,6 +15,8 @@ class GameType extends AbstractType
     {
         $builder
             ->add('title', TextType::class)
+            ->add('developmentIndustry', TextType::class)
+            ->add('TypeOfGame', TextType::class)
             ->add('description', TextType::class)
             ->add('image', TextType::class)
             ->add('price', IntegerType::class)
