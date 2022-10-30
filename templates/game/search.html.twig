@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GameController!{% endblock %}
+
+{% block body %}
+
+<body>
+{{ form_start(search,{'method': 'POST'}) }}
+
+    <div class="flex space-x-4 rounded">
+        <form class="bg-white shadow-md rounded px-8 h-4 w-52 ">
+
+            <div class="my-custom-class-for-errors">
+                {{ form_errors(search) }}
+            </div>
+
+          <div class="h-4 w-52 mt-4 rounded">
+            {{ form_row(search.title,{ 'label': ' ' }) }}
+        </div>
+
+
+        <div class="rounded mt-4 font-bold flex animate-bounce place-content-center bg-black text-white font-bold text-center p-2 ">
+            <button class="">
+            {{ form_row(search.save, { 'label': 'SEARCH' }) }}
+            </button>
+        </div>
+
+
+        {{ form_rest(search) }}
+        </form>
+
+      </div>
+
+{{ form_end(search) }}
+
+    </body>
+{% endblock %}

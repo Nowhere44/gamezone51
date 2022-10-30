@@ -1,4 +1,13 @@
+
+
+    {% extends 'base.html.twig' %}
+
+{% block title %}Hello GameController!{% endblock %}
+
+{% block body %}
+
 <link href="{{asset('CSS/header.css')}}" rel="stylesheet" />
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 <head>
     <link href="https://fonts.googleapis.com/css?family=Scada:400,400i,700&display=swap" rel="stylesheet"> 
     <link href="{{asset('CSS/header.css')}}" rel="stylesheet" />
@@ -7,14 +16,31 @@
   <body>
     <div class="header">
       <div class="inner-header">
-      <div class="logo">
+      <div class="logo mt-4">
         <a href='{{path('allgame', {})}}'><img class="rounded" src="https://png.pngtree.com/template/20190916/ourmid/pngtree-pro-gamer---gaming-logo-design-template-image_304123.jpg" width="70px" height="70px"></a>
       </div>
   
-      <div class="nav">
+      <div class="nav h-18">
         <ul>
+
+          <div class="flex space-x-32 font-bold ">
+
+          <div class='h-8 w-6 mt-4 font-bold '>
           <li><a href="{{path('admingame')}}">ADMIN</a></li>
+          </div>
+
+          <div class=''>
+          <li class='mr-44'>
+            {{ include("@game/search.html.twig") }}</li>
+          </div>
+
+        </div>
+        
         </ul>
       </div>
       </div>
     </div>
+
+
+    </body>
+{% endblock %}

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\Type\GameType;
 use App\Form\Type\EditGameType;
+use App\Form\Type\SearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -45,18 +46,93 @@ class GameController extends AbstractController
     }
 
 
+    #[Route('/result/{name}', name: 're')]
+    public function result(string $name, Request $request, GameLauncherRepository $g): Response
+    {
+
+        $s = $g->Search($name);
+        // dd($s);
+        if (count($s) == 1) {
+
+
+            $id = $s[0]->getId();
+
+            return $this->redirectToRoute('once', ['id' => $id]);
+        }
+
+        $searchform = $this->createForm(SearchType::class);
+        $searchform->handleRequest($request);
+
+        if ($searchform->isSubmitted() && $searchform->isValid()) {
+
+            $search = $searchform->getData();
+
+
+
+            $s = $g->Search($search);
+
+            /* c'est ici qu'il faut que tu renvois l'affichage avec ton twig searchResult */
+            return $this->render('request/searchResult.html.twig', ['controller_name' => 'GameController', 'search' => $searchform->createView(), 'searchResults' => $s]);
+            /* si non tu peux afficher le resultat directement dans search.html.twig */
+        }
+
+        /* c'est ici qu'il faut que tu renvois l'affichage avec ton twig searchResult */
+        return $this->render('request/searchResult.html.twig', ['controller_name' => 'GameController', 'searchResults' => $s, 'search' => $searchform->createView()]);
+        /* si non tu peux afficher le resultat directement dans search.html.twig */
+    }
+
+
+    // #[Route('/search', name: 'sear')]
+    // public function search(Request $request, GameLauncherRepository $g): Response
+    // {
+
+    //     $searchform = $this->createForm(SearchType::class);
+
+    //     $searchform->handleRequest($request);
+
+    //     if ($searchform->isSubmitted() && $searchform->isValid()) {
+
+    //         $search = $searchform->getData();
+
+
+
+    //         // $s = $g->Search($search);
+
+    //         /* c'est ici qu'il faut que tu renvois l'affichage avec ton twig searchResult */
+    //         // return $this->render('request/searchResult.html.twig', ['controller_name' => 'GameController', 'search' => $searchform->createView(), 'searchResults' => $s]);
+    //         /* si non tu peux afficher le resultat directement dans search.html.twig */
+    //     }
+    //     /* si opte pour la 2eme solution, il faudra rajouter searchResult avec null et tester dans le twig cette valeur */
+    //     return $this->render('game/search.html.twig', [
+    //         'controller_name' => 'GameController', 'search' => $searchform->createView(),
+    //         /* 'searchResults' => null */
+    //     ]);
+    // }
 
 
     #[Route('', name: 'allgame')]
-    public function allgames(GameLauncherRepository $game): Response
+    public function allgames(GameLauncherRepository $game, Request $request): Response
     {
 
+        $searchform = $this->createForm(SearchType::class);
+        $searchform->handleRequest($request);
 
+        if ($searchform->isSubmitted() && $searchform->isValid()) {
+
+            $search = $searchform->getData();
+
+            // $s = $game->Search($search);
+
+            /* c'est ici qu'il faut que tu renvois l'affichage avec ton twig searchResult */
+            // return $this->render('request/searchResult.html.twig', ['controller_name' => 'GameController', 'search' => $searchform->createView(), 'searchResults' => $s]);
+            /* si non tu peux afficher le resultat directement dans search.html.twig */
+            return $this->redirectToRoute('re', ['name' => implode($search)]);
+        }
         $all = $game->findAllOrderById();
 
 
         return $this->render('game/all.html.twig', [
-            'controller_name' => 'GameController',  'outall' => $all
+            'controller_name' => 'GameController',  'outall' => $all, 'search' => $searchform->createView()
         ]);
     }
 
@@ -119,6 +195,7 @@ class GameController extends AbstractController
             'controller_name' => 'GameController', 'formedit' => $editform->createView(), 'une' => $gemme
         ]);
     }
+
 
 
 

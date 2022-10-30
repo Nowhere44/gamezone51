@@ -83,6 +83,23 @@ class GameLauncherRepository extends ServiceEntityRepository
         return $query->execute();
     }
 
+
+
+    public function Search($title): array
+    {
+
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT p
+            FROM App\Entity\GameLauncher as p
+            WHERE
+                    (p.title = :title)'
+        )->setParameter('title', $title);
+
+        return $query->execute();
+    }
+
     //    /**
     //     * @return GameLauncher[] Returns an array of GameLauncher objects
     //     */
