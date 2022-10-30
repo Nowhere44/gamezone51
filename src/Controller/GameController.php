@@ -71,43 +71,14 @@ class GameController extends AbstractController
 
             $s = $g->Search($search);
 
-            /* c'est ici qu'il faut que tu renvois l'affichage avec ton twig searchResult */
+
             return $this->render('request/searchResult.html.twig', ['controller_name' => 'GameController', 'search' => $searchform->createView(), 'searchResults' => $s]);
-            /* si non tu peux afficher le resultat directement dans search.html.twig */
         }
 
-        /* c'est ici qu'il faut que tu renvois l'affichage avec ton twig searchResult */
+
         return $this->render('request/searchResult.html.twig', ['controller_name' => 'GameController', 'searchResults' => $s, 'search' => $searchform->createView()]);
-        /* si non tu peux afficher le resultat directement dans search.html.twig */
     }
 
-
-    // #[Route('/search', name: 'sear')]
-    // public function search(Request $request, GameLauncherRepository $g): Response
-    // {
-
-    //     $searchform = $this->createForm(SearchType::class);
-
-    //     $searchform->handleRequest($request);
-
-    //     if ($searchform->isSubmitted() && $searchform->isValid()) {
-
-    //         $search = $searchform->getData();
-
-
-
-    //         // $s = $g->Search($search);
-
-    //         /* c'est ici qu'il faut que tu renvois l'affichage avec ton twig searchResult */
-    //         // return $this->render('request/searchResult.html.twig', ['controller_name' => 'GameController', 'search' => $searchform->createView(), 'searchResults' => $s]);
-    //         /* si non tu peux afficher le resultat directement dans search.html.twig */
-    //     }
-    //     /* si opte pour la 2eme solution, il faudra rajouter searchResult avec null et tester dans le twig cette valeur */
-    //     return $this->render('game/search.html.twig', [
-    //         'controller_name' => 'GameController', 'search' => $searchform->createView(),
-    //         /* 'searchResults' => null */
-    //     ]);
-    // }
 
 
     #[Route('', name: 'allgame')]
@@ -121,11 +92,6 @@ class GameController extends AbstractController
 
             $search = $searchform->getData();
 
-            // $s = $game->Search($search);
-
-            /* c'est ici qu'il faut que tu renvois l'affichage avec ton twig searchResult */
-            // return $this->render('request/searchResult.html.twig', ['controller_name' => 'GameController', 'search' => $searchform->createView(), 'searchResults' => $s]);
-            /* si non tu peux afficher le resultat directement dans search.html.twig */
             return $this->redirectToRoute('re', ['name' => implode($search)]);
         }
         $all = $game->findAllOrderById();
