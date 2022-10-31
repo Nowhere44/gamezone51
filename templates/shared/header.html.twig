@@ -1,17 +1,20 @@
 
 
-    {% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{ asset('CSS/header.css') }}">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Scada:400,400i,700&display=swap" rel="stylesheet"> 
+{% endblock %}
 
 {% block title %}Hello GameController!{% endblock %}
 
 {% block body %}
 
 <link href="{{asset('CSS/header.css')}}" rel="stylesheet" />
-<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-<head>
-    <link href="https://fonts.googleapis.com/css?family=Scada:400,400i,700&display=swap" rel="stylesheet"> 
-    <link href="{{asset('CSS/header.css')}}" rel="stylesheet" />
-  </head>
+
+
   
   <body>
     <div class="header">
