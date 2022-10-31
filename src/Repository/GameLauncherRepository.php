@@ -87,7 +87,7 @@ class GameLauncherRepository extends ServiceEntityRepository
 
     public function Search($title): array
     {
-
+        $title = '%' . $title . '%';
         $entityManager = $this->getEntityManager();
 
         $query = $entityManager->createQuery(
