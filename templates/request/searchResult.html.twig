@@ -21,7 +21,7 @@
     {% for element in searchResults %} 
 
     <div class="wrapper">
-    <article class="-mt-44 ">
+    <article class="-mt-44 space-y-4">
         <picture class="backdrop"><img src=""></picture>
         <div class="front">
           <div class="info-backdrop"></div>
@@ -36,7 +36,7 @@
     </div>
     
             <h2 class="font-bold">{{element.getPrice}} €</h2>
-            <button class="learn-more mt-6"><a class="" href="{{path('once', {'id' : element.getId})}}">PLUS DE DETAILS</a></button>
+            <button class="learn-more mt-6"><a class="no-underline text-white" href="{{path('once', {'id' : element.getId})}}">PLUS DE DETAILS</a></button>
            </div>
     
           </div>
