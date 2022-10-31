@@ -62,17 +62,19 @@
             </div>
 
           <div class="border-4 border-gray-800 rounded w-full py-2 px-3 text-gray-700 ">
-            {{ form_row(search.title) }}
+            {{ form_row(search.title, { 'label': ' ' }) }}
         </div>
         <div class="rounded mt-4 font-bold flex animate-bounce place-content-center ">
             {{ form_row(search.save, { 'label': 'RESEARCH AGAIN' }) }}
         </div>
 
         </form>
-        {{ form_rest(search) }}
-      </div>
 
+      </div>
+      
+      {{ form_rest(search) }}
 {{ form_end(search) }}
+
   {% endif %}
 {% endif %}
 
