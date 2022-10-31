@@ -1,11 +1,35 @@
 {% extends './base.html.twig' %}
+
 {% block title %}Homepage{% endblock %}
 
+{% block stylesheets %}
+  <style>
+    html {
+    scroll-behavior: smooth;
+    }
+    #haut {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+  
+    color: white;
+    cursor: pointer;
+  
+    border-radius: 10px;
+  
+    }
+    #haut:hover {
+    background-color:;
+    }
+    </style>  
+{% endblock %}
 
 {% block body %}
-{{ include("shared/header.html.twig") }}
-<link href="{{asset('CSS/homepa.css')}}" rel="stylesheet" />
-<link href="{{asset('CSS/boutton.css')}}" rel="stylesheet" />
+  {{ include("shared/header.html.twig") }}
 
 
 <div class="wrapper">
@@ -70,29 +94,7 @@
 
 <section>
 
-<style>
-  html {
-  scroll-behavior: smooth;
-  }
-  #haut {
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  right: 30px;
-  z-index: 99;
-  border: none;
-  outline: none;
 
-  color: white;
-  cursor: pointer;
-
-  border-radius: 10px;
-
-  }
-  #haut:hover {
-  background-color:;
-  }
-  </style>
   
   <div'>
   <button onclick="retourHaut()" id="haut" title="Retour haut de page"><img class="h-20 w-14 animate-bounce"  src='https://img.icons8.com/fluency/344/shift.png' /></button>

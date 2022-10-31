@@ -1,9 +1,8 @@
-<head>
-    <link href="https://fonts.googleapis.com/css?family=Scada:400,400i,700&display=swap" rel="stylesheet"> 
-    <link href="{{asset('CSS/header.css')}}" rel="stylesheet" />
-  </head>
-  
-  <body>
+{% block stylesheets %}
+  <link rel="stylesheet" type="text/css" href="{{ asset('CSS/header.css') }}">
+{% endblock %}
+
+{% block body %}
     <div class="header">
       <div class="inner-header">
       <div class="logo">
@@ -15,3 +14,4 @@
       </div>
       </div>
     </div>
+{% endblock %}
