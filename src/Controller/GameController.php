@@ -50,7 +50,7 @@ class GameController extends AbstractController
     public function result(string $name, Request $request, GameLauncherRepository $g): Response
     {
 
-        $d = $g->Search($name);
+        $d = $g->Search2($name);
         // dd($s);
         if (count($d) == 1) {
 
@@ -76,7 +76,7 @@ class GameController extends AbstractController
         }
 
 
-        return $this->render('request/searchResult.html.twig', ['controller_name' => 'GameController', 'searchResults' => $d, 'search' => $searchform->createView()]);
+        return $this->render('request/searchResult.html.twig', ['controller_name' => 'GameController', 'search' => $searchform->createView(), 'searchResults' => $d]);
     }
 
 
