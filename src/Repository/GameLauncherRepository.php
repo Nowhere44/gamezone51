@@ -94,7 +94,7 @@ class GameLauncherRepository extends ServiceEntityRepository
             'SELECT p
             FROM App\Entity\GameLauncher as p
             WHERE
-                    (p.title = :title)'
+                    (p.title like :title)'
         )->setParameter('title', $title);
 
         return $query->execute();
