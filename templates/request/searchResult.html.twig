@@ -1,16 +1,12 @@
 {% extends './base.html.twig' %}
 {% block title %}Homepage{% endblock %}
 
-{% block stylesheets %}
-<link href="{{asset('CSS/homepa.css')}}" rel="stylesheet" />
-<link href="{{asset('CSS/boutton.css')}}" rel="stylesheet" />
-{% endblock %}
-
 
 {% block body %}
 {{ include("shared/headerconnexion.html.twig") }}
-
-
+<link href="{{asset('CSS/homepa.css')}}" rel="stylesheet" />
+<link href="{{asset('CSS/boutton.css')}}" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 {% if searchResults is defined %}
   {% if searchResults|length > 0 %}
@@ -21,14 +17,14 @@
     {% for element in searchResults %} 
 
     <div class="wrapper">
-    <article class="-mt-44">
+    <article class="-mt-44 ">
         <picture class="backdrop"><img src=""></picture>
         <div class="front">
           <div class="info-backdrop"></div>
           <img src="{{element.getImage}}">
           
           <div class="info">
-            <h1 class='font-bold mt-6 font-extrabold text-transparent text-6xl bg-clip-text bg-gradient-to-r from-black to-gray-400'>{{element.getTitle}}</h1>    
+            <h1 class='font-bold mt-6 font-extrabold text-transparent text-7xl bg-clip-text bg-gradient-to-r from-black to-gray-400'>{{element.getTitle}}</h1>    
     <div class="flex space-x-2 justify-center ">
       <h1 class='text-5xl font-bold mt-6'>Type : </h1>
             <h1 class='text-5xl text-gray-500 font-bold mt-6'> {{element.getTypeOfGame}}</h1>
@@ -36,7 +32,7 @@
     </div>
     
             <h2 class="font-bold">{{element.getPrice}} €</h2>
-            <button class="learn-more mt-6"><a class="no-underline text-white" href="{{path('once', {'id' : element.getId})}}">PLUS DE DETAILS</a></button>
+            <button class="learn-more mt-6"><a class="" href="{{path('once', {'id' : element.getId})}}">PLUS DE DETAILS</a></button>
            </div>
     
           </div>
@@ -52,7 +48,7 @@
 
   {% else %}
   <h1 class="text-7xl text-center p-6  space-y-10  mt-6 bg-clip-text bg-gradient-to-r from-black to-gray-400  text-transparent text font-mono ">Il n'y a aucun résultat associé à cette recherche: </h1>
-  {{ form_start(search,{'method': 'GET'}) }}
+  {{ form_start(search,{'method': 'POST'}) }}
 
     <div class="p-4 w-full mx-auto border">
         <form class="bg-white  rounded px-8 pt-6 pb-8 mb-4 ">
@@ -67,11 +63,11 @@
         <div class="rounded mt-4 font-bold flex animate-bounce place-content-center ">
             {{ form_row(search.save, { 'label': 'RESEARCH AGAIN' }) }}
         </div>
-
+        {{ form_rest(search) }}
         </form>
 
       </div>
-      {{ form_rest(search) }}
+
 {{ form_end(search) }}
   {% endif %}
 {% endif %}
