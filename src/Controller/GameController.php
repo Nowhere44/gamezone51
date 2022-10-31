@@ -69,7 +69,7 @@ class GameController extends AbstractController
 
 
 
-            $s = $g->Search($search);
+            $s = $g->Search2($search);
 
 
             return $this->render('request/searchResult.html.twig', ['controller_name' => 'GameController', 'search' => $searchform->createView(), 'searchResults' => $s]);
