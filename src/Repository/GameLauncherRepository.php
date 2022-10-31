@@ -93,8 +93,7 @@ class GameLauncherRepository extends ServiceEntityRepository
         $query = $entityManager->createQuery(
             'SELECT p
             FROM App\Entity\GameLauncher as p
-            WHERE
-                    (UPPER(p.title) like UPPER(:title))'
+            WHERE (UPPER(p.title) like UPPER(:title))'
         )->setParameter('title', $title);
 
         return $query->execute();
