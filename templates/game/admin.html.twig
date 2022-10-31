@@ -16,7 +16,7 @@
 <h1 class="text-7xl text-center p-6  space-y-10  mt-6 bg-clip-text bg-gradient-to-r from-black to-gray-400  text-transparent text font-mono ">Welcome to admin center</h1>
 
 <div class="flex justify-center space-x-12 mb-10">
-  <button class="learn-more mt-10 no-underline"><a href="{{path('app_game', {})}}">CREATE NEW GAME</a></button>
+  <button class="learn-more mt-10 "><a class="no-underline" href="{{path('app_game', {})}}">CREATE NEW GAME</a></button>
   </div>
 
 <div class="overflow-x-auto relative mt-4 p-20">
@@ -68,16 +68,16 @@
               {{element.getTypeOfGame}}
             </td>
             <td class="py-4 px-6">
-              <button class="bg-transparent text-blue-700 font-semibold hover:text-black py-2 px-4  border-gray-100 no-underline ">
-                <a href="{{path('gameedit', {'id' : element.getId})}}" class="px-4 py-2 text-sm rounded border border-gray-600 ">Modifier</a>
+              <button class="bg-transparent text-blue-700 font-semibold hover:text-black py-2 px-4  border-gray-100 ">
+                <a class="no-underline" href="{{path('gameedit', {'id' : element.getId})}}" class="px-4 py-2 text-sm rounded border border-gray-600 ">Modifier</a>
               </button>
               
             </td>
 
             <td class="py-4 px-6">
 
-              <button class="bg-transparent text-blue-700 font-semibold hover:text-black py-2 px-4 border-gray-800 rounded no-underline">
-                <a href="{{path('gamedel', {'id' : element.getId})}}" class="px-4 py-2 text-sm rounded border border-gray-600  text-red-800">Supprimer</a>
+              <button class="bg-transparent text-blue-700 font-semibold hover:text-black py-2 px-4 border-gray-800 rounded ">
+                <a class="no-underline" href="{{path('gamedel', {'id' : element.getId})}}" class="px-4 py-2 text-sm rounded border border-gray-600  text-red-800">Supprimer</a>
               </button>
             </td>
         </tr>
