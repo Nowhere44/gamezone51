@@ -6,7 +6,7 @@
 
 {{ include("shared/headerconnexion.html.twig") }}
   
-    <h1 class="text-6xl font-bold text-center mt-4 mb-6 ">Register</h1>
+    <h1 class="text-7xl font-bold text-center mt-4 mb-10">Register</h1>
 
     <div class="w-96 mx-auto ">
     {{ form_start(registrationForm,{'method': 'GET'}) }}
@@ -18,7 +18,7 @@
         }) }}
         {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn border rounded">Register</button>
         {{ form_rest(registrationForm) }} 
     {{ form_end(registrationForm) }}
 
