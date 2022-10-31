@@ -2,9 +2,14 @@
 
 {% block title %}Hello ConnexionController!{% endblock %}
 
+{% block stylesheets %}
+<link href="{{asset('CSS/connexion.css')}}" rel="stylesheet" />
+{% endblock %}
+
+
 {% block body %}
 {{ include("shared/headerconnexion.html.twig") }}
-<link href="{{asset('CSS/connexion.css')}}" rel="stylesheet" />
+
 <div class="container">
 
   <form action="{{path('admingame')}}" class="form-2">

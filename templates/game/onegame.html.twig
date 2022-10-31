@@ -2,11 +2,39 @@
 
 {% block title %}Details Jeux{% endblock %}
 
+{% block stylesheets %}
+<style>
+  html {
+  scroll-behavior: smooth;
+  }
+  #haut {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+
+  color: white;
+  cursor: pointer;
+
+  border-radius: 10px;
+
+  }
+  #haut:hover {
+  background-color:;
+  }
+  </style>
+<link href="{{asset('CSS/homepa.css')}}" rel="stylesheet" />
+{% endblock %}
+
+
 {% block body %}
 
 
 {{ include("shared/headerconnexion.html.twig") }}
-<link href="{{asset('CSS/homepa.css')}}" rel="stylesheet" />
+
 
 <h1 class="text-9xl text-center p-6 font-bold space-y-10 italic text-gray-600 mt-10 mb-14 "> {{one.getTitle}} </h1>
 <img class="mx-auto h-96 w-96 rounded object-cover object-center animate-bounce" src="{{one.getImage}}"/>
@@ -55,29 +83,7 @@
 {% endfor %}
 
 
-<style>
-  html {
-  scroll-behavior: smooth;
-  }
-  #haut {
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  right: 30px;
-  z-index: 99;
-  border: none;
-  outline: none;
 
-  color: white;
-  cursor: pointer;
-
-  border-radius: 10px;
-
-  }
-  #haut:hover {
-  background-color:;
-  }
-  </style>
   
   <div'>
   <button onclick="retourHaut()" id="haut" title="Retour haut de page"><img class="h-20 w-14 animate-bounce"  src='https://img.icons8.com/fluency/344/shift.png' /></button>
