@@ -7,6 +7,7 @@
     <h1>Register</h1>
 
     {{ form_start(registrationForm) }}
+
 <section class="h-screen">
         <div class="container px-6 py-12 h-full">
           <div class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
@@ -21,8 +22,7 @@
               <form>
                 <!-- Email input -->
                 <div class="mb-6">
-                  {{ form_row(registrationForm.email, {
-                    label: 'Password' , 'class':'form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
+                  {{ form_row(registrationForm.email, {'class':'form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
                 }) }}
                 </div>
       
@@ -39,7 +39,7 @@
 
                   </div>
                 </div>
-      
+
                 <!-- Submit button -->
                 <button
                   type="submit"
@@ -47,8 +47,9 @@
                   data-mdb-ripple="true"
                   data-mdb-ripple-color="light"
                 >
-                  Register
+  Register
                 </button>
+
 
     {{ form_end(registrationForm) }}
 
