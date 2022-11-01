@@ -50,22 +50,21 @@ class GameController extends AbstractController
     public function result(string $name, Request $request, GameLauncherRepository $g): Response
     {
 
-        $d = $g->Search($name);
-        // dd($s);
-        if (count($d) == 1) {
-
-
-            $id = $d[0]->getId();
-
-            return $this->redirectToRoute('once', ['id' => $id]);
-        } else {
-            return $this->redirectToRoute('allgame');
-        }
 
         $searchform = $this->createForm(SearchType::class);
         $searchform->handleRequest($request);
 
         if ($searchform->isSubmitted() && $searchform->isValid()) {
+
+            $d = $g->Search($name);
+            // dd($s);
+            if (count($d) == 1) {
+
+
+                $id = $d[0]->getId();
+
+                return $this->redirectToRoute('once', ['id' => $id]);
+            }
 
             $search = $searchform->getData();
 
