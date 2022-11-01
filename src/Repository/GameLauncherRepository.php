@@ -87,13 +87,13 @@ class GameLauncherRepository extends ServiceEntityRepository
 
     public function Search($title): array
     {
-        // $title = '%' . $title . '%';
+        $title = '%' . $title . '%';
         $entityManager = $this->getEntityManager();
 
         $query = $entityManager->createQuery(
             'SELECT p
             FROM App\Entity\GameLauncher as p
-            WHERE (p.title = :title)'
+            WHERE (UPPER(p.title) like UPPER(:title))'
         )->setParameter('title', $title);
 
         return $query->execute();
