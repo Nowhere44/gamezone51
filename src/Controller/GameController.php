@@ -65,9 +65,9 @@ class GameController extends AbstractController
 
         if ($searchform->isSubmitted() && $searchform->isValid()) {
 
-            $search = $searchform->getData();
+            $name = $searchform->getData();
 
-            $s = $g->Search($search);
+            $s = $g->Search($name);
 
 
 
