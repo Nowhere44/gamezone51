@@ -58,6 +58,8 @@ class GameController extends AbstractController
             $id = $d[0]->getId();
 
             return $this->redirectToRoute('once', ['id' => $id]);
+        } else {
+            return $this->redirectToRoute('allgame');
         }
 
         $searchform = $this->createForm(SearchType::class);
@@ -66,8 +68,6 @@ class GameController extends AbstractController
         if ($searchform->isSubmitted() && $searchform->isValid()) {
 
             $search = $searchform->getData();
-
-
 
             $s = $g->Search($search);
 
