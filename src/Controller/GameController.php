@@ -51,7 +51,7 @@ class GameController extends AbstractController
     {
 
         $s = $g->Search($name);
-        dd($name);
+        // dd($name);
         if (count($s) == 1) {
 
 
@@ -63,16 +63,12 @@ class GameController extends AbstractController
         $searchform = $this->createForm(SearchType::class);
         $searchform->handleRequest($request);
 
-        // if ($searchform->isSubmitted() && $searchform->isValid()) {
+        if ($searchform->isSubmitted() && $searchform->isValid()) {
 
-        //     $name = $searchform->getData();
+            $search = $searchform->getData();
 
-        //     $s = $g->Search($name);
-
-
-
-        //     return $this->render('request/searchResult.html.twig', ['controller_name' => 'GameController', 'search' => $searchform->createView(), 'searchResults' => $s]);
-        // }
+            return $this->redirectToRoute('re', ['name' => implode($search)]);
+        }
 
 
         return $this->render('request/searchResult.html.twig', ['controller_name' => 'GameController', 'search' => $searchform->createView(), 'searchResults' => $s]);
