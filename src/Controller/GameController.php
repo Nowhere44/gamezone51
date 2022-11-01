@@ -63,15 +63,15 @@ class GameController extends AbstractController
         $searchform = $this->createForm(SearchType::class);
         $searchform->handleRequest($request);
 
-        // if ($searchform->isSubmitted() && $searchform->isValid()) {
+        if ($searchform->isSubmitted() && $searchform->isValid()) {
 
-        //     $search = $searchform->getData();
+            $search = $searchform->getData();
 
-        //     $s = $g->Search($search);
+            $s = $g->Search($search);
 
 
-        //     return $this->render('request/searchResult.html.twig', ['controller_name' => 'GameController', 'search' => $searchform->createView(), 'searchResults' => $s]);
-        // }
+            return $this->render('request/searchResult.html.twig', ['controller_name' => 'GameController', 'search' => $searchform->createView(), 'searchResults' => $s]);
+        }
 
 
         return $this->render('request/searchResult.html.twig', ['controller_name' => 'GameController', 'search' => $searchform->createView(), 'searchResults' => $s]);
