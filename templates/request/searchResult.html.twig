@@ -52,10 +52,9 @@
 
   {% else %}
   <h1 class="text-7xl text-center p-6  space-y-10  mt-6 bg-clip-text bg-gradient-to-r from-black to-gray-400  text-transparent text font-mono ">Il n'y a aucun résultat associé à cette recherche: </h1>
-  {{ form_start(search,{'method': 'POST'}) }}
+  {{ form_start(search,{'method': 'POST','action':{{path('allgame')}} }) }}
 
     <div class="p-4 w-full mx-auto border">
-        <form class="bg-white  rounded px-8 pt-6 pb-8 mb-4 ">
 
         <div class="my-custom-class-for-errors">
           {{ form_errors(search ) }}
@@ -66,13 +65,11 @@
         <div class="rounded mt-4 font-bold flex animate-bounce place-content-center ">
             {{ form_row(search.save, { 'label': 'RESEARCH AGAIN' }) }}
         </div>
-        {{ form_rest(search) }}
-        </form>
 
 
       </div>
 
-
+      {{ form_rest(search) }}
 {{ form_end(search) }}
 
   {% endif %}
