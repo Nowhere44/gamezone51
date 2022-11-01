@@ -50,21 +50,20 @@ class GameController extends AbstractController
     public function result(string $name, Request $request, GameLauncherRepository $g): Response
     {
 
+        $s = $g->Search($name);
+        // dd($s);
+        if (count($s) == 1) {
+
+
+            $id = $s[0]->getId();
+
+            return $this->redirectToRoute('once', ['id' => $id]);
+        }
 
         $searchform = $this->createForm(SearchType::class);
         $searchform->handleRequest($request);
 
         if ($searchform->isSubmitted() && $searchform->isValid()) {
-
-            $d = $g->Search($name);
-            // dd($s);
-            if (count($d) == 1) {
-
-
-                $id = $d[0]->getId();
-
-                return $this->redirectToRoute('once', ['id' => $id]);
-            }
 
             $search = $searchform->getData();
 
@@ -75,7 +74,7 @@ class GameController extends AbstractController
         }
 
 
-        return $this->render('request/searchResult.html.twig', ['controller_name' => 'GameController', 'search' => $searchform->createView(), 'searchResults' => $d]);
+        return $this->render('request/searchResult.html.twig', ['controller_name' => 'GameController', 'search' => $searchform->createView(), 'searchResults' => $s]);
     }
 
 
