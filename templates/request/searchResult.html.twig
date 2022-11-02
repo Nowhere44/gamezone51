@@ -17,12 +17,10 @@
   
   <h1 class="text-7xl text-center p-6  space-y-10  mt-6 bg-clip-text bg-gradient-to-r from-black to-gray-400  text-transparent text font-mono ">Les résultats de votre recherche sont les suivantes : </h1>
   {% for element in searchResults %}
-<section class="grid grid-cols-3 gap-4 w-full">
-  <div class="flex justify-center">
+
+  <div class="grid grid-cols-3 gap-4 ">
     <div class="rounded-lg shadow-lg bg-white max-w-sm">
-      <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
         <img class="rounded-t-lg" src="{{element.getImage}}" alt=""/>
-      </a>
       <div class="p-6">
         <h5 class="text-gray-900 text-xl font-medium mb-2">{{element.getTitle}}</h5>
         <p class="text-gray-700 text-base mb-4">
@@ -34,7 +32,7 @@
       </div>
     </div>
   </div>
-</section>
+
 
     {% endfor %}
 
